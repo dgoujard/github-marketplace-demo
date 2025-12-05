@@ -9,10 +9,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
       - name: Install dependencies
         run: npm install
       - name: Run tests
-        run: npm test -- --coverage
+        run: npm test
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
+	with:
+           token: ${{ secrets.CODECOV_TOKEN }}
